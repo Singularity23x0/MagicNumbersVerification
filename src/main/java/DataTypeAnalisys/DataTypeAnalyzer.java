@@ -1,32 +1,37 @@
 package DataTypeAnalisys;
 
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
 
 public class DataTypeAnalyzer {
-    protected DataType type;
 
-    public DataTypeAnalyzer(DataType type) {
-        this.type = type;
-    }
-
-    public boolean isType(File file) {
+    public DataType findType(File file){
         String hexContent = this.getContentInHex(file);
-        return this.checkPrefix(hexContent) && this.checkSuffix(hexContent);
+        DataType fileType = DataType.UNDEFINED;
+
+        for (DataType type : DataType.values()
+             ) {
+            if(fileType == DataType.UNDEFINED && this.isType(hexContent, type)){
+                fileType = type;
+            }
+        }
+
+        return fileType;
     }
 
-    public DataType getType(File file){
-        return this.type;
+    private boolean isType(String hexContent, DataType type) {
+        return this.checkPrefix(hexContent, type) && this.checkSuffix(hexContent, type);
     }
 
-    private boolean checkPrefix(String hexContent){
-        return hexContent.startsWith(this.type.getPrefix());
+    private boolean checkPrefix(String hexContent, DataType type){
+        return hexContent.startsWith(type.getPrefix());
     }
 
-    private boolean checkSuffix(String hexContent){
-        return hexContent.endsWith(this.type.getSuffix());
+    private boolean checkSuffix(String hexContent, DataType type){
+        return hexContent.endsWith(type.getSuffix());
     }
 
     private String getContentInHex(File file){

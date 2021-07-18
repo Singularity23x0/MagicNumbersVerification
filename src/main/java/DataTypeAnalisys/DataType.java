@@ -7,7 +7,7 @@ public enum DataType {
     JPG("ffd8", "ffd9", "jpg file"),
     TXT("efbbbf", "", "text file"),
     PNG("89504e470d0a1a0a", "", "png"),
-    UNDEFINED("", "", "undefined type");
+    UNDEFINED("", "", "not defined inside the program");
 
     public final String prefix;
     public final String suffix;
