@@ -6,7 +6,7 @@ public enum DataType {
     GIF("474946383961", "", "gif file", ".gif"),
     JPG("ffd8", "ffd9", "jpg file", ".jpg"),
     TXT("efbbbf", "", "text file", ".txt"),
-    PNG("89504e470d0a1a0a", "", "png", ".png"),
+    PNG("89504e470d0a1a0a", "", "png file", ".png"),
     UNDEFINED("", "", "file not handled by the program", "undefined");
 
     public final String prefix;
