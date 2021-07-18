@@ -30,11 +30,9 @@ public enum DataType {
         DataType type = UNDEFINED;
         if(path.endsWith(".txt")){
             type = TXT;
-        }
-        else if(path.endsWith(".gif")){
+        } else if(path.endsWith(".gif")){
             type = GIF;
-        }
-        else if(path.endsWith(".jpg")){
+        } else if(path.endsWith(".jpg")){
             type = JPG;
         }
         return type;
